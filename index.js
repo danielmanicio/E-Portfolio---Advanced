@@ -1,0 +1,27 @@
+// template_oo6wrup
+// service id: service_v7h3ia2
+// public key: fFmOpaBgbqbyaM2-d
+
+function contact (event) {
+    event.preventDefault();
+    const loading = document.querySelector('.modal__overlay--loading')
+    const success = document.querySelector('.modal__overlay--success')
+    loading.classList += " modal__overlay--visible"
+    
+    emailjs
+        .sendForm(
+           'service_v7h3ia2',
+           'template_oo6wrup',
+           event.target,
+           'fFmOpaBgbqbyaM2-d'
+        ).then(() => {
+            loading.classList.remove("modal__overlay--visible");
+            success.classList += " modal__overlay--visible";
+        }).catch(() => {
+            loading.classList.remove("modal__overlay--visible");
+            alert(
+                "The email service is temporarily unavailable. Please contact me directly on pdanielmanicio@gmail.com"
+            );
+        })
+
+}
